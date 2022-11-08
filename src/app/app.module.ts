@@ -14,25 +14,29 @@ import { MonserviceService } from './services/monservice.service';
 import { ComponentCatalogueComponent } from './component-catalogue/component-catalogue.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentRechercheComponent } from './component-recherche/component-recherche.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
+import { CatalogueModule } from './modules/catalogue/catalogue.module';
+import { ContactModule } from './modules/contact/contact.module';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentFormComponent,
-    ComponentAffichageComponent,
     FooterComponent,
     HeaderComponent,
     ValiditeNumberDirective,
     ValiditeStringDirective,
-    TelFormatPipe,
-    ComponentCatalogueComponent,
-    ComponentRechercheComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    CatalogueModule,
+    ContactModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EMPTY, empty } from 'rxjs';
 import { Client } from '../Class/client';
 
@@ -32,6 +33,21 @@ export class ComponentFormComponent implements OnInit {
   cacherErreur : boolean = true;
 
   client !: Client;
+
+  clientForm = new FormGroup({
+    prenom: new FormControl('',[Validators.required]),
+    nom: new FormControl('',[Validators.required]),
+    genre: new FormControl('',[Validators.email, Validators.required]),
+    adresse: new FormControl('',[Validators.required]),
+    ville: new FormControl('',[Validators.required]),
+    address: new FormControl('',[Validators.required]),
+    cp: new FormControl('',[Validators.required]),
+    email: new FormControl('',[Validators.required, Validators.pattern('[0-9]{5}')]),
+    tel: new FormControl('',[Validators.required]),
+    pays: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
+    confirmPassword: new FormControl('',[Validators.required]),
+  });
 
   ngOnInit(): void {
     this.title = "Formulaire de contact";
