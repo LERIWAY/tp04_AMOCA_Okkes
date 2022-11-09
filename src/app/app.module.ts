@@ -18,6 +18,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogueModule } from './modules/catalogue/catalogue.module';
 import { ContactModule } from './modules/contact/contact.module';
+import { NgxsModule } from '@ngxs/store';
+import { MagasinState } from './magasin/magasin-state';
+import { PanierComponent } from './panier/panier.component';
 
 
 
@@ -28,6 +31,7 @@ import { ContactModule } from './modules/contact/contact.module';
     HeaderComponent,
     ValiditeNumberDirective,
     ValiditeStringDirective,
+    PanierComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ import { ContactModule } from './modules/contact/contact.module';
     AppRoutingModule,
     CatalogueModule,
     ContactModule,
+    NgxsModule.forRoot([MagasinState])
   ],
   providers: [],
   bootstrap: [AppComponent]

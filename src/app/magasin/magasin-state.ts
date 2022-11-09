@@ -14,7 +14,7 @@ import { MagasinStateModel } from "./magasin-state-model";
 export class MagasinState {
     @Selector()
     static getNbProducts(state: MagasinStateModel) {
-        return state.products.length
+        return state.products.length;
     }
 
     @Selector()
@@ -34,11 +34,7 @@ export class MagasinState {
     ) {
         const state = getState();
         patchState({
-            products: state.products.find((t) => t.id === payload.id)
-                ? state.products.map((t) =>
-                    t.id === payload.id ? { ...t, quantity: t.quantity + 1 } : t
-                )
-                : [...state.products, { ...payload, quantity: 1 }],
+            products: [...state.products, payload]
         });
     }
 
@@ -49,11 +45,9 @@ export class MagasinState {
     ) {
         const state = getState();
         patchState({
-            products: state.products.find((t) => t.id === payload.id)?.quantity === 1
-                ? state.products.filter((t) => t.id !== payload.id)
-                : state.products.map((t) =>
-                    t.id === payload.id ? { ...t, quantity: t.quantity - 1 } : t
-                ),
+            products: state.products.filter(
+                (x) => !(payload.name == x.name)
+              ),
         });
     }
 }

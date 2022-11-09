@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Product } from '../Class/product';
-import { AddProduct, DeleteProduct } from '../magasin/magasin-action';
+import { AddProduct, DeleteProduct, GetProduct } from '../magasin/magasin-action';
 import { MonserviceService } from '../services/monservice.service';
 
 @Component({
-  selector: 'app-component-catalogue',
-  templateUrl: './component-catalogue.component.html',
-  styleUrls: ['./component-catalogue.component.css']
+  selector: 'app-panier',
+  templateUrl: './panier.component.html',
+  styleUrls: ['./panier.component.css']
 })
-export class ComponentCatalogueComponent implements OnInit {
+export class PanierComponent implements OnInit {
 
   products !: Product[];
 
@@ -23,6 +22,10 @@ export class ComponentCatalogueComponent implements OnInit {
 
   delToMagasinList(product: Product): void{
     this.store.dispatch(new DeleteProduct(product));
+  }
+
+  getMagasinList(product: Product): void{
+    this.store.dispatch(new GetProduct(product));
   }
 
   ngOnInit(): void {
@@ -43,6 +46,4 @@ export class ComponentCatalogueComponent implements OnInit {
   updateList(event: Product[]) {
     this.products = event;
   }
-
-
 }

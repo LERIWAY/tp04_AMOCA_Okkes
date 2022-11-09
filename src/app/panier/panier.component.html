@@ -1,8 +1,5 @@
 <div>
-    <h1>Catalogue</h1>
-    <app-component-recherche [property]="'name'" [list]="products" (filterResult)="updateList($event)"
-        (filterReset)="getCatalogueProducts()">
-    </app-component-recherche>
+    <h1>Panier</h1>
 
     <div *ngIf="products" class="flex">
         <div *ngFor="let product of products">
